@@ -180,6 +180,7 @@ func (a *arbitrumEstimator) refreshPricesInArbGas() (t *time.Timer) {
 	if !bPerL2Tx.IsUint64() || !bPerL1CalldataUnit.IsUint64() {
 		a.logger.Errorf("Failed to refresh prices, returned integers are not uint64", "perL2Tx", bPerL2Tx.String(),
 			"perL1CalldataUnit", bPerL1CalldataUnit.String())
+		return
 	}
 
 	perL2Tx := bPerL2Tx.Uint64()
@@ -187,6 +188,7 @@ func (a *arbitrumEstimator) refreshPricesInArbGas() (t *time.Timer) {
 	if perL2Tx > math.MaxUint32 || perL1CalldataUnit > math.MaxUint32 {
 		a.logger.Errorf("Failed to refresh prices, returned integers are not uint32", "perL2Tx", perL2Tx,
 			"perL1CalldataUnit", perL1CalldataUnit)
+		return
 	}
 
 	a.logger.Debugw("refreshPricesInArbGas", "perL2Tx", perL2Tx, "perL2CalldataUnit", perL1CalldataUnit)

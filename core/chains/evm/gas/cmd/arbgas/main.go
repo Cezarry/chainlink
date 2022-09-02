@@ -29,7 +29,7 @@ func main() {
 	run(context.Background(), lggr, url, func(e gas.Estimator) {
 		printGetLegacyGas(e, make([]byte, 10), 500_000, assets.GWei(1))
 		printGetLegacyGas(e, make([]byte, 10), 500_000, assets.GWei(1), gas.OptForceRefetch)
-		printGetLegacyGas(e, make([]byte, 10), 5_000_000, assets.GWei(1))
+		printGetLegacyGas(e, make([]byte, 10), 50_000_000, assets.GWei(1))
 	})
 }
 
